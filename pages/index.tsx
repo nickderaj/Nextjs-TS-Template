@@ -1,12 +1,10 @@
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
 import { NextPageWithLayout } from './page';
 
-const Home: NextPageWithLayout = () => {
+export default function Home(_: NextPageWithLayout) {
   return <section>Test</section>;
-};
+}
 
-export default Home;
-
-Home.getLayout = (page) => {
+Home.getLayout = (page: React.ReactNode) => {
   return <PrimaryLayout title="Home Page">{page}</PrimaryLayout>;
 };
