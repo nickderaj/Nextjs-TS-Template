@@ -1,7 +1,7 @@
+import { PageWithLayout } from 'types/page';
 import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
-import { NextPageWithLayout } from './page';
 
-export default function Home(_: NextPageWithLayout) {
+export default function Home(_: PageWithLayout) {
   return <section>Test</section>;
 }
 
