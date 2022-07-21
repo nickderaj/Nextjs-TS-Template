@@ -1,8 +1,13 @@
-import { PageWithLayout } from 'types/page';
-import PrimaryLayout from '../components/layouts/primary/PrimaryLayout';
+import BaseTemplate from '@/components/templates/base/BaseTemplate';
+import { PageWithLayout } from '@/types/page';
+import PrimaryLayout from '@/components/layouts/primary/PrimaryLayout';
 
 export default function Home(_: PageWithLayout) {
-  return <section>Test</section>;
+  return (
+    <section>
+      <BaseTemplate sampleTextProp="hello" />
+    </section>
+  );
 }
 
 Home.getLayout = (page: React.ReactNode) => {

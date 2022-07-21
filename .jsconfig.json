@@ -2,10 +2,14 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "components/*": ["./components/*"],
-      "types/*": ["./types/*"],
-      "helpers/*": ["helpers/*"],
-      "public/*": ["public/*"]
+      "@/styles/*": ["styles/*"],
+      "@/components/*": ["./components/*"],
+      "@/types/*": ["./types/*"],
+      "@/helpers/*": ["helpers/*"],
+      "@/public/*": ["public/*"]
     }
+  },
+  "typeAcquisition": {
+    "include": ["jest"]
   }
 }

@@ -3,15 +3,20 @@
   "globals": {
     "React": "readonly"
   },
+  "env": {
+    "jest": true
+  },
   "overrides": [
     {
-      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)"],
+      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)", "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
       "rules": {
         "storybook/hierarchy-separator": "error"
-      }
+      },
+      "extends": ["plugin:testing-library/react"]
     }
   ],
   "rules": {
-    "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
+    "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }],
+    "import/no-anonymous-default-export": 0
   }
 }
