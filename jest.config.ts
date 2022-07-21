@@ -9,10 +9,11 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    // Handle module aliases (this will be automatically configured for you soon)
     '^@/components/(.*)$': '<rootDir>/components/$1',
-
-    '^@/pages/(.*)$': '<rootDir>/pages/$1',
+    '^@/types/(.*)$': '<rootDir>/types/$1',
+    '^@/helpers/(.*)$': '<rootDir>/helpers/$1',
+    '^@/public/(.*)$': '<rootDir>/public/$1',
+    '^@/redux/(.*)$': '<rootDir>/redux/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
 };

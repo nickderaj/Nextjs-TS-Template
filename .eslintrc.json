@@ -1,5 +1,5 @@
 {
-  "extends": ["plugin:storybook/recommended", "next", "next/core-web-vitals", "eslint:recommended"],
+  "extends": ["next", "next/core-web-vitals", "eslint:recommended"],
   "globals": {
     "React": "readonly"
   },
@@ -8,10 +8,7 @@
   },
   "overrides": [
     {
-      "files": ["*.stories.@(ts|tsx|js|jsx|mjs|cjs)", "**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-      "rules": {
-        "storybook/hierarchy-separator": "error"
-      },
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
       "extends": ["plugin:testing-library/react"]
     }
   ],
