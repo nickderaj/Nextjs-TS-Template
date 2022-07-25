@@ -7,7 +7,8 @@
       "@/types/*": ["./types/*"],
       "@/helpers/*": ["helpers/*"],
       "@/public/*": ["public/*"],
-      "@/redux/*": ["redux/*"]
+      "@/redux/*": ["redux/*"],
+      "@/tests/*": ["tests/*"]
     }
   },
   "typeAcquisition": {
