@@ -1,6 +1,7 @@
 import Button, { IButton } from '@/components/buttons/SampleButton';
+import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 
 describe('Sample Button', () => {
   // Initialise props

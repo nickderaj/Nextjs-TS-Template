@@ -1,8 +1,8 @@
-import Modal from 'components/modals/Modal';
+import Button from '@/components/buttons/SampleButton';
+import Modal from '@/components/modals/Modal';
+import { setSampleModalOpen } from '@/redux/slices/modalSlice';
+import { RootState } from '@/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSampleModalOpen } from 'redux/slices/modalSlice';
-import { RootState } from 'redux/store';
-import Button from '../buttons/SampleButton';
 
 export default function SampleModal() {
   const dispatch = useDispatch();
