@@ -22,7 +22,8 @@
       "@/helpers/*": ["helpers/*"],
       "@/public/*": ["public/*"],
       "@/redux/*": ["redux/*"],
-      "@/tests/*": ["tests/*"]
+      "@/tests/*": ["tests/*"],
+      "@/db/*": ["db/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

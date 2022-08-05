@@ -7,6 +7,7 @@ export interface IModal {
   children: React.ReactNode;
 }
 
+// Simple Reusable Modal Portal component with a transparent overlay
 // <Modal>{children}</Modal> to separate modals into the modal-root div
 export default function Modal({ children }: IModal) {
   const [modalRoot, setModalRoot] = useState<HTMLElement>();

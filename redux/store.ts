@@ -1,8 +1,11 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 import modalReducer from './slices/modalSlice';
+import friendReducer from './slices/friendSlice';
 
+// Global state management using redux toolkit as it's simple & reliable
 const combinedReducer = combineReducers({
   modal: modalReducer,
+  friend: friendReducer,
 });
 
 function setupStore(preloadedState?: PreloadedState<RootState>) {
