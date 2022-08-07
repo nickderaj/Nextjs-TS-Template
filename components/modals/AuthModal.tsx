@@ -1,5 +1,4 @@
 import { setAuthError } from '@/redux/slices/authSlice';
-import { setAuthModalOpen } from '@/redux/slices/modalSlice';
 import useAuth from 'hooks/useAuth';
 import { FormEvent, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +8,6 @@ import LogoutModalBody from '../elements/modals/LogoutModalBody';
 
 export default function AuthModal() {
   const { signup, login, logout } = useAuth();
-  const { authError } = useSelector((state: RootState) => state.auth);
   const { authModalOpen, authModalState } = useSelector((state: RootState) => state.modal);
 
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
@@ -26,18 +24,17 @@ export default function AuthModal() {
 
     switch (authModalState) {
       case 'login':
-        login(email, password);
+        await login(email, password);
         break;
       case 'logout':
-        logout();
+        await logout();
         break;
       case 'signup':
-        signup(email, password);
+        await signup(email, password);
         break;
     }
 
     setIsSubmitting(false);
-    if (!authError) dispatch(setAuthModalOpen(false));
   };
 
   return (

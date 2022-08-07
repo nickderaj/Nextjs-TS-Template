@@ -1,22 +1,20 @@
-import Button from '@/components/elements/buttons/Button';
 import PrimaryLayout from '@/components/layouts/PrimaryLayout';
-import SampleModal from '@/components/modals/AuthModal';
-import { setLoginModalOpen, setLogoutModalOpen, setSignupModalOpen } from '@/redux/slices/modalSlice';
+import { RootState } from '@/redux/store';
 import { PageWithLayout } from '@/types/page';
-import { useDispatch } from 'react-redux';
+import { FaRegSmileBeam } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 export default function Home(_: PageWithLayout) {
-  const dispatch = useDispatch();
-
+  const { authLoading } = useSelector((state: RootState) => state.auth);
   return (
-    <>
-      <section className="flex justify-center items-center h-screen w-screen">
-        <Button onClick={() => dispatch(setLoginModalOpen())} title="Log In" />
-        <Button onClick={() => dispatch(setSignupModalOpen())} title="Sign Up" />
-        <Button onClick={() => dispatch(setLogoutModalOpen())} title="Log Out" />
-      </section>
-      <SampleModal />
-    </>
+    <section className="flex justify-center items-center">
+      {!authLoading && (
+        <div className="flex justify-end items-center gap-1 w-full px-20 sm:px-48 text-indigo-500  animate-bounce">
+          <FaRegSmileBeam className="text-2xl" />
+          <span className="text-4xl">&#8605;</span>
+        </div>
+      )}
+    </section>
   );
 }
 
