@@ -1,5 +1,4 @@
-import Modal from '@/components/modals/Modal';
-import { setSampleModalOpen } from '@/redux/slices/modalSlice';
+import Modal from '@/components/elements/modals/Modal';
 import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';
 import { cleanup, screen } from '@testing-library/react';
@@ -20,14 +19,11 @@ describe('Modal Portal', () => {
 
   // Run Tests
   it('will create a component in the modal-root div', () => {
-    const { store } = render(
+    render(
       <Modal>
         <div>Magical Wizardry</div>
       </Modal>
     );
-    act(() => {
-      store.dispatch(setSampleModalOpen(true));
-    });
 
     let modalRoot = screen.getByTestId('modal-root');
     let div = screen.getByText('Magical Wizardry');
