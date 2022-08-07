@@ -1,5 +1,8 @@
-import useAuth from 'hooks/useAuth';
+import { auth } from '@/config/firebase';
+import { setUser } from '@/redux/slices/authSlice';
 import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Navbar from './Navbar';
 export interface IPrimaryLayout {
   title: string;
@@ -7,7 +10,22 @@ export interface IPrimaryLayout {
 }
 
 export default function PrimaryLayout({ title, children }: IPrimaryLayout) {
-  const { loading } = useAuth();
+  const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      console.log(user);
+      const email = user?.email || '';
+      const photoURL = user?.photoURL || '';
+      const displayName = user?.displayName || '';
+      dispatch(setUser({ email, photoURL, displayName }));
+
+      setLoading(false);
+    });
+
+    return unsubscribe;
+  }, [dispatch]);
 
   return (
     <>

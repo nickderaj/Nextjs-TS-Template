@@ -38,9 +38,19 @@ export default function AuthModalBody({ isSubmitting, setEmail, setPassword, han
         )}
         <h4 className="text-base border-b py-3 px-6 mb-4">{authModalState === 'login' ? 'Log In' : 'Sign Up'}</h4>
         <div className="flex justify-center items-center w-full">
+          {/* DESKTOP VERSION: */}
           <div
-            onClick={googleSignIn}
-            className="flex mx-6 w-fit px-6 py-1 mb-4 bg-white justify-center items-center gap-2 border rounded-md 
+            onClick={() => googleSignIn(false)}
+            className="hidden sm:flex mx-6 w-fit px-6 py-1 mb-4 bg-white justify-center items-center gap-2 border rounded-md 
+            cursor-pointer text-sm text-neutral-500 hover:text-neutral-700 hover:shadow-md duration-300 transition-all"
+          >
+            <Image src="/google_logo.png" alt="google logo" height="16" width="16" />
+            <span>Sign in with Google</span>
+          </div>
+          {/* MOBILE VERSION: */}
+          <div
+            onClick={() => googleSignIn(true)}
+            className="flex sm:hidden mx-6 w-fit px-6 py-1 mb-4 bg-white justify-center items-center gap-2 border rounded-md 
             cursor-pointer text-sm text-neutral-500 hover:text-neutral-700 hover:shadow-md duration-300 transition-all"
           >
             <Image src="/google_logo.png" alt="google logo" height="16" width="16" />

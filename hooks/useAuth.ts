@@ -7,39 +7,27 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
   signOut,
 } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 
 import { useDispatch } from 'react-redux';
 
 export default function useAuth() {
-  const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      const email = user?.email || '';
-      const photoURL = user?.photoURL || '';
-      const displayName = user?.displayName || '';
-
-      dispatch(setUser({ email, photoURL, displayName }));
-      setLoading(false);
-    });
-
-    return unsubscribe;
-  }, [dispatch]);
-
-  const googleSignIn = async () => {
+  const googleSignIn = async (withRedirect: boolean = false) => {
     try {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth, provider);
-      dispatch(setAuthModalOpen(false));
-      router.push('/dashboard');
+      if (withRedirect) await signInWithRedirect(auth, provider);
+      if (!withRedirect) {
+        await signInWithPopup(auth, provider);
+        router.push('/dashboard');
+        dispatch(setAuthModalOpen(false));
+      }
     } catch (error) {
-      console.log(error);
       clearUser();
       dispatch(setAuthError(mapErrors(error)));
     }
@@ -48,8 +36,8 @@ export default function useAuth() {
   const login = async (email: string, password: string) => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      dispatch(setAuthModalOpen(false));
       router.push('/dashboard');
+      dispatch(setAuthModalOpen(false));
     } catch (error) {
       clearUser();
       dispatch(setAuthError(mapErrors(error)));
@@ -58,16 +46,16 @@ export default function useAuth() {
 
   const logout = async () => {
     await signOut(auth);
-    clearUser();
-    dispatch(setAuthModalOpen(false));
     router.push('/');
+    dispatch(setAuthModalOpen(false));
+    clearUser();
   };
 
   const signup = async (email: string, password: string) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      dispatch(setAuthModalOpen(false));
       router.push('/dashboard');
+      dispatch(setAuthModalOpen(false));
     } catch (error) {
       clearUser();
       dispatch(setAuthError(mapErrors(error)));
@@ -96,5 +84,5 @@ export default function useAuth() {
     return 'Something went wrong.';
   };
 
-  return { googleSignIn, signup, login, logout, loading };
+  return { googleSignIn, signup, login, logout };
 }
