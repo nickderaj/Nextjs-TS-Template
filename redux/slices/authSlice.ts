@@ -3,13 +3,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface ISliceState {
   user: string;
   authError: string;
-  authLoading: boolean;
 }
 
 const initialState: ISliceState = {
   user: '',
   authError: '',
-  authLoading: true,
 };
 
 export const authSlice = createSlice({
@@ -18,7 +16,6 @@ export const authSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<string>) => {
       state.user = action.payload;
-      state.authLoading = false;
     },
     setAuthError: (state, action: PayloadAction<string>) => {
       state.authError = action.payload;

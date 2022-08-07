@@ -1,6 +1,5 @@
-import { store } from '@/redux/store';
+import useAuth from 'hooks/useAuth';
 import Head from 'next/head';
-import { Provider } from 'react-redux';
 import Navbar from './Navbar';
 export interface IPrimaryLayout {
   title: string;
@@ -8,18 +7,22 @@ export interface IPrimaryLayout {
 }
 
 export default function PrimaryLayout({ title, children }: IPrimaryLayout) {
+  const { loading } = useAuth();
+
   return (
-    <Provider store={store}>
+    <>
       <Head>
         <title>{title}</title>
       </Head>
 
-      <div className="min-h-screen flex flex-col">
-        <Navbar />
-        <main className="flex-grow flex flex-col">{children}</main>
-        <div className="m-auto" />
-        {/* Footer here */}
-      </div>
-    </Provider>
+      {!loading && (
+        <div className="min-h-screen flex flex-col">
+          <Navbar />
+          <main className="flex-grow flex flex-col">{children}</main>
+          <div className="m-auto" />
+          {/* Footer here */}
+        </div>
+      )}
+    </>
   );
 }

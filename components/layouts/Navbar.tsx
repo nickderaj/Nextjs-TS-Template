@@ -5,20 +5,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import AuthModal from '../modals/AuthModal';
 
 export default function Navbar() {
-  const { user, authLoading } = useSelector((state: RootState) => state.auth);
+  const { user } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch();
 
   return (
     <div className="flex justify-between items-center bg-gradient-to-r from-neutral-50 to-neutral-100 shadow-sm py-2 px-6 sm:px-36">
       <h1 className="flex items-center gap-2 font-semibold text-sm py-2">Auth Example</h1>
       <div className="flex gap-2 sm:gap-3">
-        {!authLoading && !user && (
+        {!user && (
           <>
             <Button onClick={() => dispatch(setSignupModalOpen())} variant="secondary" title="Sign Up" />
             <Button onClick={() => dispatch(setLoginModalOpen())} title="Log In" />
           </>
         )}
-        {!authLoading && user && <Button onClick={() => dispatch(setLogoutModalOpen())} title="Log Out" />}
+        {user && <Button onClick={() => dispatch(setLogoutModalOpen())} title="Log Out" />}
       </div>
       <AuthModal />
     </div>
