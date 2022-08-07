@@ -1,62 +1,54 @@
 import { auth } from '@/config/firebase';
-import { setAuthError, setToken, setUser } from '@/redux/slices/authSlice';
+import { setAuthError, setUser } from '@/redux/slices/authSlice';
+import { setAuthModalOpen } from '@/redux/slices/modalSlice';
 import { FirebaseError } from 'firebase/app';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import { useEffect } from 'react';
-import { useCookies } from 'react-cookie';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
 import { useDispatch } from 'react-redux';
 
 export default function useAuth() {
+  const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
-
-  const [cookies, setCookie, removeCookie] = useCookies(['userToken']);
-  const { userToken } = cookies;
+  const router = useRouter();
 
   useEffect(() => {
-    dispatch(setToken(userToken));
-  }, [userToken, dispatch]);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setLoading(false);
+      dispatch(setUser(user?.email || ''));
+    });
 
-  const signup = async (email: string, password: string) => {
-    try {
-      const res = await createUserWithEmailAndPassword(auth, email, password);
-      const { user } = res;
-
-      updateUserCookie(await user.getIdToken());
-      dispatch(setUser(user.email || ''));
-    } catch (error) {
-      clearUser();
-      dispatch(setAuthError(mapErrors(error)));
-    }
-  };
+    return unsubscribe;
+  }, [dispatch]);
 
   const login = async (email: string, password: string) => {
     try {
-      const res = await signInWithEmailAndPassword(auth, email, password);
-      const { user } = res;
-
-      updateUserCookie(await user.getIdToken());
-      dispatch(setUser(user.email || ''));
+      await signInWithEmailAndPassword(auth, email, password);
+      dispatch(setAuthModalOpen(false));
+      router.push('/dashboard');
     } catch (error) {
-      clearUser();
+      dispatch(setUser(''));
       dispatch(setAuthError(mapErrors(error)));
     }
   };
 
   const logout = async () => {
     await signOut(auth);
-    clearUser();
-  };
-
-  const updateUserCookie = (token: string, expiresIn: number = 3600) => {
-    setCookie('userToken', token, {
-      path: '/',
-      maxAge: Number(expiresIn),
-    });
-  };
-
-  const clearUser = () => {
     dispatch(setUser(''));
-    removeCookie('userToken');
+    dispatch(setAuthModalOpen(false));
+    router.push('/');
+  };
+
+  const signup = async (email: string, password: string) => {
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      dispatch(setAuthModalOpen(false));
+      router.push('/dashboard');
+    } catch (error) {
+      dispatch(setUser(''));
+      dispatch(setAuthError(mapErrors(error)));
+    }
   };
 
   const mapErrors = (error: unknown) => {
@@ -75,5 +67,5 @@ export default function useAuth() {
     return 'Something went wrong.';
   };
 
-  return { signup, login, logout };
+  return { signup, login, logout, loading };
 }
