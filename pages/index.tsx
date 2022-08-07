@@ -1,4 +1,4 @@
-import Button from '@/components/buttons/SampleButton';
+import Button from '@/components/elements/buttons/Button';
 import PrimaryLayout from '@/components/layouts/PrimaryLayout';
 import SampleModal from '@/components/modals/SampleModal';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
