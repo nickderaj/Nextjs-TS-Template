@@ -1,17 +1,18 @@
 import Button from '@/components/buttons/SampleButton';
 import PrimaryLayout from '@/components/layouts/PrimaryLayout';
 import SampleModal from '@/components/modals/SampleModal';
-import { setSampleModalOpen } from '@/redux/slices/modalSlice';
 import { PageWithLayout } from '@/types/page';
-import { useDispatch } from 'react-redux';
+import useAuth from 'hooks/useAuth';
 
 export default function Home(_: PageWithLayout) {
-  const dispatch = useDispatch();
+  const { signup, login, logout } = useAuth();
 
   return (
     <>
       <section className="flex justify-center items-center h-screen w-screen">
-        <Button onClick={() => dispatch(setSampleModalOpen(true))} title="OPEN MODAL" />
+        <Button onClick={() => signup('nick@example.com', 'Test123')} title="Sign Up" />
+        <Button onClick={() => login('nick@example.com', 'Test123')} title="Log In" />
+        <Button onClick={() => logout()} title="Log Out" />
       </section>
       <SampleModal />
     </>
