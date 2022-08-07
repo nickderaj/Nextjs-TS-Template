@@ -1,23 +1,21 @@
-import Button from '@/components/buttons/SampleButton';
-import Modal from '@/components/modals/Modal';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
 import { RootState } from '@/redux/store';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SampleModalBody from '../elements/modals/SampleModalBody';
 
 export default function SampleModal() {
-  const dispatch = useDispatch();
   const { sampleModalOpen } = useSelector((state: RootState) => state.modal);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const dispatch = useDispatch();
 
-  return (
-    <>
-      {sampleModalOpen && (
-        <Modal>
-          <div className="bg-neutral-50 z-50 rounded-md p-12 flex flex-col px-16 max-w-[561px]">
-            <h4 className="text-lg text-center py-2">Sample</h4>
-            <Button onClick={() => dispatch(setSampleModalOpen(false))} title="CLOSE MODAL" />
-          </div>
-        </Modal>
-      )}
-    </>
-  );
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsSubmitting(true);
+    dispatch(setSampleModalOpen(false));
+    setIsSubmitting(false);
+  };
+
+  return <>{sampleModalOpen && <SampleModalBody handleSubmit={handleSubmit} isSubmitting={isSubmitting} />}</>;
 }
