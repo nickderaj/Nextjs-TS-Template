@@ -10,7 +10,7 @@ export default function Dashboard(_: PageWithLayout) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!user) router.push('/');
+    if (!user.email) router.push('/');
   }, [router, user]);
 
   return (
