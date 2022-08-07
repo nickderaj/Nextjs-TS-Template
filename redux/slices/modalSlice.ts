@@ -29,12 +29,16 @@ export const modalSlice = createSlice({
       state.authModalOpen = true;
       state.authModalState = 'signup';
     },
+    setAuthModalState: (state, action: PayloadAction<'login' | 'signup' | 'logout'>) => {
+      state.authModalState = action.payload;
+    },
     closeAllModals: (state) => {
       state.authModalOpen = false;
     },
   },
 });
 
-export const { setAuthModalOpen, setLoginModalOpen, setLogoutModalOpen, setSignupModalOpen, closeAllModals } = modalSlice.actions;
+export const { setAuthModalOpen, setLoginModalOpen, setLogoutModalOpen, setSignupModalOpen, setAuthModalState, closeAllModals } =
+  modalSlice.actions;
 
 export default modalSlice.reducer;

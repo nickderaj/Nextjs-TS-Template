@@ -26,7 +26,7 @@ export default function LogoutModalBody({ isSubmitting, handleSubmit }: ILogoutM
         <form onSubmit={handleSubmit} className="px-6 pb-4 flex flex-col">
           <span>Are you sure you want to log out?</span>
           <div className="flex gap-2 my-4 justify-center items-center">
-            <Button type="button" variant="secondary" title="CANCEL" onClick={() => dispatch(setAuthModalOpen(false))} />
+            <Button type="button" variant="secondary" title="Cancel" onClick={() => dispatch(setAuthModalOpen(false))} />
             <Button type="submit" title="Log Out" disabled={isSubmitting} />
           </div>
         </form>

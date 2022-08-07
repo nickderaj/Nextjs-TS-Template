@@ -12,13 +12,13 @@ export default function Navbar() {
     <div className="flex justify-between items-center bg-gradient-to-r from-neutral-50 to-neutral-100 shadow-sm py-2 px-6 sm:px-36">
       <h1 className="flex items-center gap-2 font-semibold text-sm py-2">Auth Example</h1>
       <div className="flex gap-2 sm:gap-3">
-        {!user && (
+        {!user.email && (
           <>
             <Button onClick={() => dispatch(setSignupModalOpen())} variant="secondary" title="Sign Up" />
             <Button onClick={() => dispatch(setLoginModalOpen())} title="Log In" />
           </>
         )}
-        {user && <Button onClick={() => dispatch(setLogoutModalOpen())} title="Log Out" />}
+        {user.email && <Button onClick={() => dispatch(setLogoutModalOpen())} title="Log Out" />}
       </div>
       <AuthModal />
     </div>

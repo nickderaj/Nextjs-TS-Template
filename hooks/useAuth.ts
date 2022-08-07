@@ -2,7 +2,13 @@ import { auth } from '@/config/firebase';
 import { setAuthError, setUser } from '@/redux/slices/authSlice';
 import { setAuthModalOpen } from '@/redux/slices/modalSlice';
 import { FirebaseError } from 'firebase/app';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -15,12 +21,29 @@ export default function useAuth() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
+      const email = user?.email || '';
+      const photoURL = user?.photoURL || '';
+      const displayName = user?.displayName || '';
+
+      dispatch(setUser({ email, photoURL, displayName }));
       setLoading(false);
-      dispatch(setUser(user?.email || ''));
     });
 
     return unsubscribe;
   }, [dispatch]);
+
+  const googleSignIn = async () => {
+    try {
+      const provider = new GoogleAuthProvider();
+      await signInWithPopup(auth, provider);
+      dispatch(setAuthModalOpen(false));
+      router.push('/dashboard');
+    } catch (error) {
+      console.log(error);
+      clearUser();
+      dispatch(setAuthError(mapErrors(error)));
+    }
+  };
 
   const login = async (email: string, password: string) => {
     try {
@@ -28,14 +51,14 @@ export default function useAuth() {
       dispatch(setAuthModalOpen(false));
       router.push('/dashboard');
     } catch (error) {
-      dispatch(setUser(''));
+      clearUser();
       dispatch(setAuthError(mapErrors(error)));
     }
   };
 
   const logout = async () => {
     await signOut(auth);
-    dispatch(setUser(''));
+    clearUser();
     dispatch(setAuthModalOpen(false));
     router.push('/');
   };
@@ -46,9 +69,13 @@ export default function useAuth() {
       dispatch(setAuthModalOpen(false));
       router.push('/dashboard');
     } catch (error) {
-      dispatch(setUser(''));
+      clearUser();
       dispatch(setAuthError(mapErrors(error)));
     }
+  };
+
+  const clearUser = () => {
+    dispatch(setUser({ email: '', photoURL: '', displayName: '' }));
   };
 
   const mapErrors = (error: unknown) => {
@@ -60,6 +87,8 @@ export default function useAuth() {
           return 'Incorrect password.';
         case 'auth/user-not-found':
           return 'User not found.';
+        case 'auth/popup-closed-by-user':
+          return '';
         default:
           return 'Something went wrong.';
       }
@@ -67,5 +96,5 @@ export default function useAuth() {
     return 'Something went wrong.';
   };
 
-  return { signup, login, logout, loading };
+  return { googleSignIn, signup, login, logout, loading };
 }

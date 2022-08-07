@@ -40,13 +40,7 @@ export default function AuthModal() {
   return (
     <>
       {authModalOpen && authModalState !== 'logout' && (
-        <AuthModalBody
-          loginOrSignup={authModalState}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          isSubmitting={isSubmitting}
-          handleSubmit={handleSubmit}
-        />
+        <AuthModalBody setEmail={setEmail} setPassword={setPassword} isSubmitting={isSubmitting} handleSubmit={handleSubmit} />
       )}
       {authModalOpen && authModalState === 'logout' && (
         <LogoutModalBody isSubmitting={isSubmitting} handleSubmit={handleSubmit} />

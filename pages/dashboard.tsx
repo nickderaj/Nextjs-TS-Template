@@ -13,7 +13,14 @@ export default function Dashboard(_: PageWithLayout) {
     if (!user) router.push('/');
   }, [router, user]);
 
-  return <section className="flex justify-center items-center flex-grow">{user && <div>This is a protected page</div>}</section>;
+  return (
+    <section className="flex justify-center items-center flex-grow">
+      <div className="flex flex-col gap-2">
+        <h3 className="capitalize">Hello, {user.displayName.toLowerCase() || user.email.split('@')[0].toLowerCase()}</h3>
+        <h4>This is a protected page</h4>
+      </div>
+    </section>
+  );
 }
 
 Dashboard.getLayout = (page: React.ReactNode) => {
