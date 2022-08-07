@@ -16,6 +16,7 @@ const customJestConfig = {
     '^@/public/(.*)$': '<rootDir>/public/$1',
     '^@/redux/(.*)$': '<rootDir>/redux/$1',
     '^@/tests/(.*)$': '<rootDir>/tests/$1',
+    '^@/config/(.*)$': '<rootDir>/config/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
 };
