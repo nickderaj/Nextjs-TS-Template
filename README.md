@@ -19,6 +19,7 @@ This is a Next.js app with TypeScript that performs simple CRUD operations using
 ## Project Setup
 
 - To run the app, run `yarn install` and `yarn dev`.
+- You'll need to include your own environment variables from youre Firebase Project, check `env.example` for the required env. variables.
 - To run Jest, run `yarn test`.
 - The lint and formatting functions are `yarn lint` and `yarn prettier` respectively.
 - The lint function will auto-run when you try to commit to a git repo, set up in the .husky folder.
@@ -49,7 +50,7 @@ I added a "Dev" button on the top right which allows you to seed and delete all 
 
 | <img src="public\docs\5. Delete.png" width="500"> |
 | :-----------------------------------------------: |
-|        **Figure 5.** Delete Friend Modal\_        |
+|        **Figure 5.** Delete Friend Modal_        |
 
 | <img src="public\docs\6. Pagination.png" width="500"> |
 | :---------------------------------------------------: |
