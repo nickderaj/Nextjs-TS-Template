@@ -1,4 +1,4 @@
-import Button, { IButton } from '@/components/buttons/SampleButton';
+import Button, { IButton } from '@/components/elements/buttons/Button';
 import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';
 import { fireEvent, screen } from '@testing-library/react';
