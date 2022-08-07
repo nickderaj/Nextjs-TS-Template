@@ -15,7 +15,6 @@ export default function PrimaryLayout({ title, children }: IPrimaryLayout) {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      console.log(user);
       const email = user?.email || '';
       const photoURL = user?.photoURL || '';
       const displayName = user?.displayName || '';
