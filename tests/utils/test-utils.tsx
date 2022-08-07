@@ -7,6 +7,7 @@ import React, { PropsWithChildren } from 'react';
 import { Provider } from 'react-redux';
 
 // As a basic setup, import your same slice reducers
+import authReducer from '@/redux/slices/authSlice';
 import modalReducer from '@/redux/slices/modalSlice';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
@@ -18,7 +19,7 @@ function renderWithProviders(
   ui: React.ReactElement,
   {
     preloadedState = {},
-    store = configureStore({ reducer: { modal: modalReducer }, preloadedState }),
+    store = configureStore({ reducer: { auth: authReducer, modal: modalReducer }, preloadedState }),
     ...renderOptions
   }: ExtendedRenderOptions = {}
 ) {
