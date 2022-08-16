@@ -1,8 +1,10 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
+import fileReducer from './slices/fileSlice';
 import modalReducer from './slices/modalSlice';
 
 const combinedReducer = combineReducers({
   modal: modalReducer,
+  file: fileReducer,
 });
 
 function setupStore(preloadedState?: PreloadedState<RootState>) {

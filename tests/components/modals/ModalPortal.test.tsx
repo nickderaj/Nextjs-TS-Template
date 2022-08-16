@@ -1,5 +1,5 @@
-import Modal from '@/components/elements/modals/Modal';
-import { setSampleModalOpen } from '@/redux/slices/modalSlice';
+import Modal from '@/components/modals/Modal';
+import { setUploadModalOpen } from '@/redux/slices/modalSlice';
 import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';
 import { cleanup, screen } from '@testing-library/react';
@@ -26,7 +26,7 @@ describe('Modal Portal', () => {
       </Modal>
     );
     act(() => {
-      store.dispatch(setSampleModalOpen(true));
+      store.dispatch(setUploadModalOpen(true));
     });
 
     let modalRoot = screen.getByTestId('modal-root');

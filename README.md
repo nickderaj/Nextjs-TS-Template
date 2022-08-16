@@ -2,17 +2,16 @@
 
 1. [Introduction](#introduction)
 2. [Project Setup](#project-setup)
-3. [Questions & Suggestions](#questions--suggestions)
+3. [API Routes](#api-routes)
 
 ## Introduction
 
-This is a Next.js starter template with TypeScript to easily get started on a production ready app. Included are
+This is a Next.js + TypeScript simple app to upload and filter through a specific type of CSV file.
 
 - Redux Tookit: To store and manage global state
-- Jest: To run unit/integration tests
+- Jest: To run frontend and api tests
 - Tailwind CSS: for quick development without the need of CSS classes,
 - ESlint + Prettier + Husky Git Hooks: to format the code and ensure that no matter who works on the code, it will stay formatted the same way.
-- Template Components (Buttons, Layouts and Modals with React Portals + Redux ) to easily replicate.
 
 ## Project Setup
 
@@ -23,7 +22,7 @@ This is a Next.js starter template with TypeScript to easily get started on a pr
 
 Note: This app was designed to only be used with yarn to prevent a `package-lock.json` from being created which can cause conflicts - change the `engines` in `package.json` if you want to use npm instead.
 
-## Questions & Suggestions
+## API Routes
 
-If you have any questions, feel free to reach out at nickderaj@gmail.com or message me on Discord at NickD#1188<br/>
-If there's something you think should be added, branch out and make a PR! :)
+- As this is a Next.js app, the API routes are integrated under `pages/api/v1` and are run on the server-side as Node.js code.
+- They are called by the frontend which are the other `pages` files, not nested under `/api`.

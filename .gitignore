@@ -15,6 +15,9 @@
 # production
 /build
 
+# test uploads with multer
+/public/uploads
+
 # misc
 .DS_Store
 *.pem

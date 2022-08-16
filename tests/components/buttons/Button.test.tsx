@@ -1,9 +1,8 @@
-import Button, { IButton } from '@/components/elements/buttons/Button';
-import { render } from '@/tests/utils/test-utils';
+import Button, { IButton } from '@/components/buttons/Button';
 import '@testing-library/jest-dom';
-import { fireEvent, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 
-describe('Sample Button', () => {
+describe('Button', () => {
   // Initialise props
   let expectedProps: IButton;
 
