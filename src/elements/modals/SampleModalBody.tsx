@@ -1,8 +1,9 @@
+import { useDispatch } from 'react-redux';
+
 import Button from '@/elements/buttons/Button';
 import ModalPortal from '@/elements/modals/ModalPortal';
-import Spinner from '@/elements/spinner/Spinner';
+import Spinner from '@/elements/Spinner';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
-import { useDispatch } from 'react-redux';
 
 export interface ISampleModalBody {
   isSubmitting: boolean;

@@ -20,7 +20,7 @@ function renderWithProviders(
     preloadedState = {},
     store = configureStore({ reducer: { modal: modalReducer }, preloadedState }),
     ...renderOptions
-  }: ExtendedRenderOptions = {}
+  }: ExtendedRenderOptions = {},
 ) {
   function Wrapper({ children }: PropsWithChildren<{}>) {
     return <Provider store={store}>{children}</Provider>;

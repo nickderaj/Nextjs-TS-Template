@@ -15,7 +15,7 @@ describe('Next Router Test', () => {
     render(
       <RouterContext.Provider value={router}>
         <button onClick={() => router.push('/dummyUrl')}>Test Click</button>
-      </RouterContext.Provider>
+      </RouterContext.Provider>,
     );
     const dummyButton = screen.getByText(/Test Click/i);
     expect(dummyButton).toBeVisible();

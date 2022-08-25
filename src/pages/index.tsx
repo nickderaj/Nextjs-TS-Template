@@ -1,9 +1,9 @@
-import Button from 'src/elements/buttons/Button';
+import { useDispatch } from 'react-redux';
 import PrimaryLayout from 'src/components/layouts/PrimaryLayout';
 import SampleModal from 'src/components/modals/SampleModal';
+import Button from 'src/elements/buttons/Button';
 import { setSampleModalOpen } from 'src/redux/slices/modalSlice';
 import { PageWithLayout } from 'src/types/page';
-import { useDispatch } from 'react-redux';
 
 export default function Home(_: PageWithLayout) {
   const dispatch = useDispatch();
@@ -18,6 +18,4 @@ export default function Home(_: PageWithLayout) {
   );
 }
 
-Home.getLayout = (page: React.ReactNode) => {
-  return <PrimaryLayout title="Home Page">{page}</PrimaryLayout>;
-};
+Home.getLayout = (page: React.ReactNode) => <PrimaryLayout title="Home Page">{page}</PrimaryLayout>;

@@ -23,7 +23,7 @@ describe('Modal Portal', () => {
     const { store } = render(
       <Modal>
         <div>Magical Wizardry</div>
-      </Modal>
+      </Modal>,
     );
     act(() => {
       store.dispatch(setSampleModalOpen(true));

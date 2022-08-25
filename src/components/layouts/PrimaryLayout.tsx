@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 export interface IPrimaryLayout {
   title: string;
   children: React.ReactNode;

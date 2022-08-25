@@ -20,7 +20,7 @@ export default function ModalPortal({ children }: { children: React.ReactNode })
         />
         {children}
       </div>,
-      modalRoot
+      modalRoot,
     );
   return <></>;
 }
