@@ -22,7 +22,7 @@ function renderWithProviders(
     ...renderOptions
   }: ExtendedRenderOptions = {},
 ) {
-  function Wrapper({ children }: PropsWithChildren<{}>) {
+  function Wrapper({ children }: PropsWithChildren<Record<string, unknown>>) {
     return <Provider store={store}>{children}</Provider>;
   }
 

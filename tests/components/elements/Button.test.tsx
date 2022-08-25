@@ -1,7 +1,7 @@
 import Button, { IButton } from '@/elements/buttons/Button';
 import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';
-import { fireEvent, screen } from '@testing-library/react';
+import { cleanup, fireEvent, screen } from '@testing-library/react';
 
 describe('Sample Button', () => {
   // Initialise props
@@ -14,6 +14,9 @@ describe('Sample Button', () => {
       onClick: jest.fn(),
     };
   });
+
+  // Clean up after each test
+  afterEach(cleanup);
 
   // Run Tests
   it('is created and function called on click', () => {
