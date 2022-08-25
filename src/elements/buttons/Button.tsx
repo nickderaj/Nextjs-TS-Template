@@ -14,9 +14,11 @@ export default function Button({ title, onClick, variant = 'primary', type = 'bu
 
     switch (variant) {
       case 'primary':
-        return `bg-indigo-500 text-white hover:brightness-125 border-indigo-500 disabled:bg-neutral-500 disabled:border-neutral-500 ${commonClasses} ${className}`;
+        return `bg-indigo-500 text-white hover:brightness-125 border-indigo-500 
+          disabled:bg-neutral-500 disabled:border-neutral-500 ${commonClasses} ${className}`;
       case 'secondary':
-        return `border-indigo-500 text-indigo-500 disabled:border-neutral-500 disabled:text-neutral-500  ${commonClasses} ${className}`;
+        return `border-indigo-500 text-indigo-500 disabled:border-neutral-500
+          disabled:text-neutral-500 ${commonClasses} ${className}`;
     }
   };
 

@@ -1,5 +1,12 @@
 {
-  "extends": ["next", "next/core-web-vitals", "airbnb-typescript"],
+  "extends": [
+    "next",
+    "airbnb-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["react", "@typescript-eslint", "jest"],
   "globals": { "React": "readonly" },
   "env": { "node": true, "jest": true },
   "overrides": [
@@ -26,6 +33,12 @@
     "no-param-reassign": 0,
     "linebreak-style": 0,
     "import/no-anonymous-default-export": 0,
-    "import/extensions": 0
+    "import/extensions": 0,
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ]
   }
 }

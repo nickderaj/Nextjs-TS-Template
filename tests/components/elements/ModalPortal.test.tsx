@@ -29,8 +29,8 @@ describe('Modal Portal', () => {
       store.dispatch(setSampleModalOpen(true));
     });
 
-    let modalRoot = screen.getByTestId('modal-root');
-    let div = screen.getByText('Magical Wizardry');
+    const modalRoot = screen.getByTestId('modal-root');
+    const div = screen.getByText('Magical Wizardry');
 
     expect(modalRoot).toBeVisible();
     expect(div).toBeVisible();

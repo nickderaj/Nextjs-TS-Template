@@ -10,7 +10,7 @@ describe('Next Router Test', () => {
 
   // Run Tests
   it('is redirected when the user clicks button', async () => {
-    let router = createMockRouter({});
+    const router = createMockRouter({});
 
     render(
       <RouterContext.Provider value={router}>
