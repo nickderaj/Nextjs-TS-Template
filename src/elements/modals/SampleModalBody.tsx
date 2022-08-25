@@ -1,19 +1,19 @@
-import Button from '@/components/elements/buttons/Button';
-import Modal from '@/components/elements/modals/Modal';
-import Spinner from '@/components/elements/spinner/Spinner';
+import Button from '@/elements/buttons/Button';
+import ModalPortal from '@/elements/modals/ModalPortal';
+import Spinner from '@/elements/spinner/Spinner';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
 import { useDispatch } from 'react-redux';
 
-export interface ILogoutModalBody {
+export interface ISampleModalBody {
   isSubmitting: boolean;
   handleSubmit: (_e: React.FormEvent) => void;
 }
 
-export default function SampleModalBody({ isSubmitting, handleSubmit }: ILogoutModalBody) {
+export default function SampleModalBody({ isSubmitting, handleSubmit }: ISampleModalBody) {
   const dispatch = useDispatch();
 
   return (
-    <Modal>
+    <ModalPortal>
       <div className="bg-neutral-50 z-50 rounded-md flex flex-col min-w-[330px] w-min h-min relative">
         {isSubmitting && (
           // Block any interaction with a loading spinner
@@ -30,6 +30,6 @@ export default function SampleModalBody({ isSubmitting, handleSubmit }: ILogoutM
           </div>
         </form>
       </div>
-    </Modal>
+    </ModalPortal>
   );
 }

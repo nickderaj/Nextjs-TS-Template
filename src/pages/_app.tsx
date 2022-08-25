@@ -1,8 +1,8 @@
-import { store } from '@/redux/store';
 import '@/styles/globals.css';
-import { PageWithLayout } from '@/types/page';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
+import { store } from 'src/redux/store';
+import { PageWithLayout } from 'src/types/page';
 interface AppPropsWithLayout extends AppProps {
   Component: PageWithLayout;
 }

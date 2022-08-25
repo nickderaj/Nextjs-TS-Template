@@ -3,12 +3,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
-export interface IModal {
-  children: React.ReactNode;
-}
-
-// <Modal>{children}</Modal> to separate modals into the modal-root div
-export default function Modal({ children }: IModal) {
+export default function ModalPortal({ children }: { children: React.ReactNode }) {
   const [modalRoot, setModalRoot] = useState<HTMLElement>();
   const dispatch = useDispatch();
 

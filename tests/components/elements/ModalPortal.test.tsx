@@ -1,4 +1,4 @@
-import Modal from '@/components/elements/modals/Modal';
+import Modal from '@/elements/modals/ModalPortal';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
 import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';

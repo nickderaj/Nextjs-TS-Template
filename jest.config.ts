@@ -9,12 +9,13 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '^@/styles/(.*)$': '<rootDir>/styles/$1',
-    '^@/components/(.*)$': '<rootDir>/components/$1',
-    '^@/types/(.*)$': '<rootDir>/types/$1',
-    '^@/helpers/(.*)$': '<rootDir>/helpers/$1',
+    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
+    '^@/elements/(.*)$': '<rootDir>/src/elements/$1',
+    '^@/components/(.*)$': '<rootDir>/src/components/$1',
+    '^@/types/(.*)$': '<rootDir>/src/types/$1',
+    '^@/helpers/(.*)$': '<rootDir>/src/helpers/$1',
     '^@/public/(.*)$': '<rootDir>/public/$1',
-    '^@/redux/(.*)$': '<rootDir>/redux/$1',
+    '^@/redux/(.*)$': '<rootDir>/src/redux/$1',
     '^@/tests/(.*)$': '<rootDir>/tests/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
