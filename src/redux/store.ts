@@ -1,7 +1,7 @@
 import { combineReducers, configureStore, PreloadedState } from '@reduxjs/toolkit';
 import modalReducer from './slices/modalSlice';
 
-const combinedReducer = combineReducers({
+export const combinedReducer = combineReducers({
   modal: modalReducer,
 });
 

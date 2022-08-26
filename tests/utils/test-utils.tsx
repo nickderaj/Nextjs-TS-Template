@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import type { AppStore, RootState } from 'src/redux/store';
 
 // As a basic setup, import your same slice reducers
-import modalReducer from '@/redux/slices/modalSlice';
+import { combinedReducer } from '@/redux/store';
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
@@ -18,7 +18,7 @@ function renderWithProviders(
   ui: React.ReactElement,
   {
     preloadedState = {},
-    store = configureStore({ reducer: { modal: modalReducer }, preloadedState }),
+    store = configureStore({ reducer: combinedReducer, preloadedState }),
     ...renderOptions
   }: ExtendedRenderOptions = {},
 ) {
