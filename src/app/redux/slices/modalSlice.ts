@@ -1,10 +1,7 @@
+import { IModalState } from '@/types/redux';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface ISliceState {
-  sampleModalOpen: boolean;
-}
-
-const initialState: ISliceState = {
+const initialState: IModalState = {
   sampleModalOpen: false,
 };
 
