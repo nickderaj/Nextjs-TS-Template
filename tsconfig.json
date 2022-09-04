@@ -16,16 +16,16 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
+      "@/public/*": ["public/*"],
       "@/styles/*": ["src/styles/*"],
       "@/elements/*": ["src/elements/*"],
       "@/components/*": ["src/components/*"],
       "@/types/*": ["src/types/*"],
       "@/helpers/*": ["src/helpers/*"],
-      "@/redux/*": ["src/redux/*"],
-      "@/public/*": ["public/*"],
-      "@/tests/*": ["tests/*"]
+      "@/redux/*": ["src/app/redux/*"],
+      "@/tests/*": ["src/tests/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/redux/slices/modalSlice.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/app/redux/slices/modalSlice.ts"],
   "exclude": ["node_modules"]
 }

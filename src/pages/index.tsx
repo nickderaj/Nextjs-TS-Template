@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import PrimaryLayout from 'src/components/layouts/PrimaryLayout';
 import SampleModal from 'src/components/modals/SampleModal';
 import Button from 'src/elements/buttons/Button';
-import { setSampleModalOpen } from 'src/redux/slices/modalSlice';
+import { setSampleModalOpen } from '@/redux/slices/modalSlice';
 import { PageWithLayout } from 'src/types/page';
 
 export default function Home(_: PageWithLayout) {

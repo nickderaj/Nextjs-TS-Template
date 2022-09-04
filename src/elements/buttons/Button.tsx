@@ -1,16 +1,13 @@
-export interface IButton {
+export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   title: string;
-  onClick?: () => void;
-  type?: 'button' | 'submit';
-  variant?: 'primary' | 'secondary';
-  disabled?: boolean;
   className?: string;
+  variant?: 'primary' | 'secondary';
 }
 
 // Reusable styled button with a primary and secondary variant, could add others like 'error' and 'warning' if needed
-export default function Button({ title, onClick, variant = 'primary', type = 'button', disabled = false, className }: IButton) {
+const Button: React.FC<IButton> = ({ title, variant = 'primary', className, ...props }) => {
   const buttonClasses = () => {
-    const commonClasses = 'border hover:shadow-md px-4 py-1 text-center text-sm rounded-full duration-300 transition-all';
+    const commonClasses = 'border hover:shadow-md px-4 py-1 text-center rounded-xl duration-300 transition-all';
 
     switch (variant) {
       case 'primary':
@@ -23,8 +20,10 @@ export default function Button({ title, onClick, variant = 'primary', type = 'bu
   };
 
   return (
-    <button disabled={disabled} type={type} onClick={onClick} className={buttonClasses()}>
+    <button {...props} className={buttonClasses()}>
       {title}
     </button>
   );
-}
+};
+
+export default Button;
