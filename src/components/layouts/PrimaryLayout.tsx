@@ -1,11 +1,11 @@
 import Head from 'next/head';
 
-export interface IPrimaryLayout {
+type Props = {
   title: string;
   children: React.ReactNode;
-}
+};
 
-export default function PrimaryLayout({ title, children }: IPrimaryLayout) {
+const PrimaryLayout: React.FC<Props> = ({ title, children }) => {
   return (
     <>
       <Head>
@@ -18,4 +18,6 @@ export default function PrimaryLayout({ title, children }: IPrimaryLayout) {
       {/* Footer here */}
     </>
   );
-}
+};
+
+export default PrimaryLayout;

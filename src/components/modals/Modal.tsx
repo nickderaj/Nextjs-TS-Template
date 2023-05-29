@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useDispatch } from 'react-redux';
 
-export default function ModalPortal({ children }: { children: React.ReactNode }) {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Modal: React.FC<Props> = ({ children }) => {
   const [modalRoot, setModalRoot] = useState<HTMLElement>();
   const dispatch = useDispatch();
 
@@ -23,4 +27,6 @@ export default function ModalPortal({ children }: { children: React.ReactNode })
       modalRoot,
     );
   return <></>;
-}
+};
+
+export default Modal;

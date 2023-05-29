@@ -1,20 +1,19 @@
-import { useDispatch } from 'react-redux';
-
+import Spinner from '@/elements/loaders/Spinner';
 import Button from '@/elements/buttons/Button';
-import ModalPortal from '@/elements/modals/ModalPortal';
-import Spinner from '@/elements/Spinner';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
+import { useDispatch } from 'react-redux';
+import Modal from './Modal';
 
-export interface ISampleModalBody {
+type Props = {
   isSubmitting: boolean;
   handleSubmit: (_e: React.FormEvent) => void;
-}
+};
 
-export default function SampleModalBody({ isSubmitting, handleSubmit }: ISampleModalBody) {
+const SampleModalBody: React.FC<Props> = ({ isSubmitting, handleSubmit }) => {
   const dispatch = useDispatch();
 
   return (
-    <ModalPortal>
+    <Modal>
       <div className="bg-neutral-50 z-50 rounded-md flex flex-col min-w-[330px] w-min h-min relative">
         {isSubmitting && (
           // Block any interaction with a loading spinner
@@ -31,6 +30,8 @@ export default function SampleModalBody({ isSubmitting, handleSubmit }: ISampleM
           </div>
         </form>
       </div>
-    </ModalPortal>
+    </Modal>
   );
-}
+};
+
+export default SampleModalBody;

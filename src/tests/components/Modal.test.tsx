@@ -1,11 +1,11 @@
-import Modal from '@/elements/modals/ModalPortal';
+import Modal from '@/components/modals/Modal';
 import { render } from '@/tests/utils/test-utils';
 import '@testing-library/jest-dom';
 import { cleanup, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
-describe('Modal Portal', () => {
-  // Create the modal root (for react portals) before every test
+describe('Modal', () => {
+  // Create the modal root (react portals) before every test
   beforeEach(() => {
     act(() => {
       const modalRoot = document.createElement('div');

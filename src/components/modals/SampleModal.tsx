@@ -1,10 +1,10 @@
-import SampleModalBody from '@/elements/modals/SampleModalBody';
 import { setSampleModalOpen } from '@/redux/slices/modalSlice';
 import { RootState } from '@/redux/store';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import SampleModalBody from './SampleModalBody';
 
-export default function SampleModal() {
+const SampleModal = () => {
   const { sampleModalOpen } = useSelector((state: RootState) => state.modal);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -21,4 +21,6 @@ export default function SampleModal() {
   };
 
   return <>{sampleModalOpen && <SampleModalBody handleSubmit={handleSubmit} isSubmitting={isSubmitting} />}</>;
-}
+};
+
+export default SampleModal;

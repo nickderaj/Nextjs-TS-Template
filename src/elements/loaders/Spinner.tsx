@@ -1,4 +1,4 @@
-export default function Spinner() {
+const Spinner = () => {
   return (
     <svg
       role="status"
@@ -17,4 +17,6 @@ export default function Spinner() {
       />
     </svg>
   );
-}
+};
+
+export default Spinner;
