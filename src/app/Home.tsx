@@ -2,9 +2,14 @@
 
 import SampleModal from '@/components/modals/SampleModal';
 import Button from '@/elements/buttons/Button';
+import { Character } from '@/types/Swapi';
 import { useState } from 'react';
 
-const Home = () => {
+type Props = {
+  character?: Character;
+};
+
+const Home: React.FC<Props> = ({ character }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const toggleModal = () => {
@@ -20,7 +25,8 @@ const Home = () => {
             Frontend Example
           </span>
         </h1>
-        <div className="mx-auto mt-5 max-w-xl sm:flex sm:justify-center md:mt-8 scale-150">
+        <p className="text-white mt-5 text-lg md:text-xl">Hello, {character?.name ?? 'Stranger'}</p>
+        <div className="mx-auto max-w-xl sm:flex sm:justify-center mt-8 scale-150">
           <Button onClick={toggleModal}>Click me</Button>
         </div>
       </main>
