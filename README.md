@@ -16,12 +16,12 @@ This is a Next.js starter template with TypeScript to easily get started on a pr
 
 ## Project Setup
 
-- To run the app, run `yarn install` and `yarn dev`.
-- To run Jest, run `yarn test`.
-- The lint and formatting functions are `yarn lint` and `yarn prettier` respectively.
+- To run the app, run `pnpm install` and `pnpm dev`.
+- To run Jest, run `pnpm test`.
+- The lint and formatting functions are `pnpm lint` and `pnpm prettier` respectively.
 - The lint function will auto-run when you try to commit to a git repo, set up in the .husky folder.
 
-Note: This app was designed to only be used with yarn to prevent a `package-lock.json` from being created which can cause conflicts - change the `engines` in `package.json` if you want to use npm instead.
+Note: This app was designed to only be used with pnpm to prevent a `package-lock.json` from being created which can cause conflicts - change the `engines` in `package.json` if you want to use npm instead.
 
 ## Questions & Suggestions
 

@@ -6,7 +6,14 @@ describe('Dropdown', () => {
   afterEach(() => cleanup());
 
   it('renders', () => {
-    render(<Dropdown data-testid="dropdown" value="yes" setValue={() => {}} options={['yes', 'no', 'maybe']} />);
+    render(
+      <Dropdown
+        data-testid="dropdown"
+        value="yes"
+        setValue={() => {}}
+        options={['yes', 'no', 'maybe']}
+      />,
+    );
     const dropdown = screen.getByTestId('dropdown');
 
     expect(dropdown).toBeInTheDocument();
@@ -14,7 +21,14 @@ describe('Dropdown', () => {
 
   it('fires the setValue function on change', () => {
     const fn = jest.fn();
-    render(<Dropdown data-testid="dropdown" value="yes" setValue={fn} options={['yes', 'no', 'maybe']} />);
+    render(
+      <Dropdown
+        data-testid="dropdown"
+        value="yes"
+        setValue={fn}
+        options={['yes', 'no', 'maybe']}
+      />,
+    );
 
     const dropdown = screen.getByTestId('dropdown');
     fireEvent.change(dropdown, { target: { value: 'no' } });
@@ -23,7 +37,14 @@ describe('Dropdown', () => {
 
   it('does not fire the setValue function on clicking the same option', () => {
     const fn = jest.fn();
-    render(<Dropdown data-testid="dropdown" value="yes" setValue={fn} options={['yes', 'no', 'maybe']} />);
+    render(
+      <Dropdown
+        data-testid="dropdown"
+        value="yes"
+        setValue={fn}
+        options={['yes', 'no', 'maybe']}
+      />,
+    );
 
     const dropdown = screen.getByTestId('dropdown');
     fireEvent.change(dropdown, { target: { value: 'yes' } });

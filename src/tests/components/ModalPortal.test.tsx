@@ -1,7 +1,7 @@
+import ModalPortal from '@/components/modals/ModalPortal';
 import '@testing-library/jest-dom';
 import { cleanup, render, screen } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import ModalPortal from '@/components/modals/ModalPortal';
 
 describe('Modal', () => {
   // Create the modal root (react portals) before every test

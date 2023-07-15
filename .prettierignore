@@ -1,4 +1,4 @@
-.yarn
+.pnpm
 .next
 dist
 node_modules
