@@ -1,6 +1,7 @@
-const Spinner = () => {
+const Spinner: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
+      {...props}
       role="status"
       className="inline w-1/12 text-white animate-spin"
       viewBox="0 0 100 101"

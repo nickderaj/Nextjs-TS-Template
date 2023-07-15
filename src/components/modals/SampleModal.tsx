@@ -1,26 +1,21 @@
-import { setSampleModalOpen } from '@/redux/slices/modalSlice';
-import { RootState } from '@/redux/store';
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import SampleModalBody from './SampleModalBody';
+'use client';
 
-const SampleModal = () => {
-  const { sampleModalOpen } = useSelector((state: RootState) => state.modal);
-  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const dispatch = useDispatch();
+import Button from '@/elements/buttons/Button';
+import Modal from './Modal';
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+type Props = {
+  toggleModal: () => void;
+  isOpen: boolean;
+};
 
-    setIsSubmitting(true);
-    setTimeout(() => {
-      // dummy timeout to show loading spinner
-      dispatch(setSampleModalOpen(false));
-      setIsSubmitting(false);
-    }, 500);
-  };
-
-  return <>{sampleModalOpen && <SampleModalBody handleSubmit={handleSubmit} isSubmitting={isSubmitting} />}</>;
+const SampleModal: React.FC<Props> = ({ toggleModal, isOpen }) => {
+  return (
+    <Modal title="Sample Modal" onClose={toggleModal} isOpen={isOpen}>
+      <div className="w-full flex justify-center items-center mb-4">
+        <Button onClick={toggleModal}>Close</Button>
+      </div>
+    </Modal>
+  );
 };
 
 export default SampleModal;

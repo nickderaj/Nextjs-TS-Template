@@ -1,32 +1,28 @@
-import { closeAllModals } from '@/redux/slices/modalSlice';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { useDispatch } from 'react-redux';
+import ModalPortal from './ModalPortal';
+import Spinner from '@/elements/loaders/Spinner';
 
 type Props = {
-  children: React.ReactNode;
+  title: string;
+  onClose: () => void;
+  isLoading?: boolean;
+  isOpen?: boolean;
+  children?: React.ReactNode;
 };
 
-const Modal: React.FC<Props> = ({ children }) => {
-  const [modalRoot, setModalRoot] = useState<HTMLElement>();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    setModalRoot(document.getElementById('modal-root') as HTMLElement);
-  }, []);
-
-  if (modalRoot)
-    return createPortal(
-      <div className="h-screen w-screen fixed top-0 left-0 flex justify-center items-center z-30">
-        <div
-          className="bg-black/[0.5] z-40 absolute h-full w-full backdrop-blur-[1px]"
-          onClick={() => dispatch(closeAllModals())}
-        />
+const Modal: React.FC<Props> = ({ title, onClose, isLoading = false, isOpen = false, children }) => {
+  return (
+    <ModalPortal onClose={onClose} isOpen={isOpen}>
+      <div className="bg-neutral-100 z-50 rounded-md flex flex-col min-w-[330px] w-min h-min relative text-neutral-900">
+        {isLoading && (
+          <div className="w-full h-full absolute rounded-md flex justify-center items-center backdrop-blur-[1.5px]">
+            <Spinner />
+          </div>
+        )}
+        <h4 className="text-base border-b py-3 px-6 mb-4">{title}</h4>
         {children}
-      </div>,
-      modalRoot,
-    );
-  return <></>;
+      </div>
+    </ModalPortal>
+  );
 };
 
 export default Modal;
