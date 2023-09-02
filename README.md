@@ -1,29 +1,34 @@
-## Table of Contents
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-1. [Introduction](#introduction)
-2. [Project Setup](#project-setup)
-3. [Questions & Suggestions](#questions--suggestions)
+## Getting Started
 
-## Introduction
+First, run the development server:
 
-This is a Next.js starter template with TypeScript to easily get started on a production ready app. Included are
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
 
-- Redux Tookit: To store and manage global state
-- Jest: To run unit/integration tests
-- Tailwind CSS: for quick development without the need of CSS classes,
-- ESlint + Prettier + Husky Git Hooks: to format the code and ensure that no matter who works on the code, it will stay formatted the same way.
-- Template Components (Buttons, Layouts and Modals with React Portals + Redux ) to easily replicate.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Project Setup
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- To run the app, run `pnpm install` and `pnpm dev`.
-- To run Jest, run `pnpm test`.
-- The lint and formatting functions are `pnpm lint` and `pnpm prettier` respectively.
-- The lint function will auto-run when you try to commit to a git repo, set up in the .husky folder.
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-Note: This app was designed to only be used with pnpm to prevent a `package-lock.json` from being created which can cause conflicts - change the `engines` in `package.json` if you want to use npm instead.
+## Learn More
 
-## Questions & Suggestions
+To learn more about Next.js, take a look at the following resources:
 
-If you have any questions, feel free to reach out at nickderaj@gmail.com or message me on Discord at NickD#1188<br/>
-If there's something you think should be added, branch out and make a PR! :)
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

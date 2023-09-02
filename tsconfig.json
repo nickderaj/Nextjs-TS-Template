@@ -1,40 +1,27 @@
 {
-  "types": ["node", "jest", "@testing-library/jest-dom"],
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
-    "module": "commonjs",
-    "target": "ES2021",
-    "sourceMap": true,
-    "strict": true,
-    "declaration": true,
-    "declarationMap": true,
-    "noEmitOnError": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "noEmit": false,
-    "allowJs": false,
-    "forceConsistentCasingInFileNames": true,
-    "composite": false,
-    "inlineSources": false,
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "preserveWatchOutput": true,
-    "outDir": "dist",
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "incremental": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
-    "baseUrl": "./",
-    "paths": { "@/*": ["src/*"] }
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/app/redux/slices/modalSlice.ts",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
