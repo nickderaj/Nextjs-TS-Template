@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --write .",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -26,13 +27,21 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "prettier": "^3.0.3"
   },
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=16.0.0",
     "yarn": ">=1.22.17",
     "npm": "please-use-yarn",
     "pnpm": "please-use-yarn"
   },
-  "engineStrict": true
+  "engineStrict": true,
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "printWidth": 100,
+    "semi": true,
+    "singleQuote": true
+  }
 }
