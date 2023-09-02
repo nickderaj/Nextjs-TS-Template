@@ -27,5 +27,12 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "husky": "^8.0.0"
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.17",
+    "npm": "please-use-yarn",
+    "pnpm": "please-use-yarn"
+  },
+  "engineStrict": true
 }
