@@ -4,5 +4,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit",
     "source.organizeImports": "explicit"
-  }
+  },
+  "css.customData": [".vscode/tailwind.json"]
 }
