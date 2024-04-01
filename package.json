@@ -42,9 +42,9 @@
   },
   "engines": {
     "node": ">=18.0.0",
-    "yarn": ">=1.22.17",
-    "npm": "please-use-yarn",
-    "pnpm": "please-use-yarn"
+    "yarn": "please-use-pnpm",
+    "npm": "please-use-pnpm",
+    "pnpm": ">=8.0.0"
   },
   "engineStrict": true,
   "prettier": {
